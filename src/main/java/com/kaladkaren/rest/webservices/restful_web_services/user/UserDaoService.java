@@ -3,6 +3,7 @@ package com.kaladkaren.rest.webservices.restful_web_services.user;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.springframework.stereotype.Component;
 
@@ -30,8 +31,8 @@ public class UserDaoService {
 	}
 
 	public User findOne(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Predicate<? super User> predicate = user -> user.getId().equals(id);
+		return users.stream().filter(predicate).findFirst().get();
 	}
 	
 }
