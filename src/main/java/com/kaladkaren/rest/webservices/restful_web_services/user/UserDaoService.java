@@ -9,6 +9,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class UserDaoService {
+
+	//KarenT_11252025: what i dont understand in Dao is why is the input of this, same as its output?
+	
 	
 	private static List<User> users = new ArrayList<>();
 
@@ -32,7 +35,7 @@ public class UserDaoService {
 
 	public User findOne(int id) {
 		Predicate<? super User> predicate = user -> user.getId().equals(id);
-		return users.stream().filter(predicate).findFirst().get();
+		return users.stream().filter(predicate).findFirst().orElse(null);
 	}
 	
 }
